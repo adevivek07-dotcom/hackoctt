@@ -1,18 +1,21 @@
 {
-  "name": "shetirakshak-ai",
+  "name": "backend",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node scripts/dev.js",
-    "dev:frontend": "npm --prefix frontend run dev",
-    "dev:backend": "npm --prefix backend run dev",
-    "clean:ports": "node backend/src/scripts/freePort.js 5000 && node backend/src/scripts/freePort.js 5173",
-    "clean:backend": "node backend/src/scripts/freePort.js 5000",
-    "build:frontend": "npm --prefix frontend run build",
-    "verify:supabase": "node --env-file=backend/.env supabase/verify_connection.js",
-    "test:backend": "npm --prefix backend test",
-    "test:frontend": "npm --prefix frontend test",
-    "test": "npm run test:backend && npm run test:frontend"
+    "start": "node src/server.js",
+    "predev": "node src/scripts/freePort.js 5000",
+    "dev": "node --watch src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.109.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0"
   }
 }
